@@ -6,7 +6,7 @@
     </article>
     <!--说明-->
     <div class="bbt-remarks">
-      <span class="copied-text" >如需转载，请注明出处：<a :href="currentURL">{{currentURL}}</a></span>
+      <span class="copied-text" >如需转载，请注明出处：<a :href="currentURL" target="_blank">{{currentURL}}</a></span>
     </div>
     <!--赞赏按钮-->
     <div class="support-btn" @click="supportShow = true"><strong>赞赏支持</strong></div>
@@ -112,6 +112,11 @@ code{
 .copied-text{
   padding:20px;
   color:#808080;
+}
+.copied-text a{
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .support-btn{
   width:150px;

@@ -3,7 +3,7 @@
       <!--标题栏目-->
       <div class="title-block">
           <span>{{articlelist.lasttime}}</span>
-          <router-link :to="{name:'article',query:{url:articlelist.url}}">
+          <router-link class="article-title" :to="{name:'article',query:{url:articlelist.url}}">
               <h2>{{articlelist.title}}</h2>
           </router-link>
       </div>
@@ -11,14 +11,19 @@
       <div class="article-abstract">{{articlelist.abstract}}</div>
       <!--标签栏-->
       <div class="tags-block">
-          <li class="item-tag" :class="value" v-for="(value,index) in articlelist.tags" :key="index">{{value}}</li>
+          <li class="item-tag" :class="value" v-for="(value,index) in articlelist.tags" :key="index" @click="tagClickEvent(value)">{{value}}</li>
       </div>
   </div>
 </template>
 <script>
 export default {
   name:'articlecard',
-  props:['articlelist']
+  props:['articlelist'],
+  methods:{
+      tagClickEvent(value){
+          this.$emit('tagEvent',value);
+      }
+  }
 }
 </script>
 <style scoped>
@@ -71,22 +76,19 @@ a{
     min-width: 70px;
     display: inline-block;
     padding:6px 10px;
-    margin:3px 1px;
+    margin:3px 2px;
     color:#fefefe;
     text-align: center;
     border-radius: 2px;
     cursor: pointer;
 }
-/**tag分配色块**/
-.javascript{
-    background: #ff6f00;
+.item-tag:hover{
+    box-shadow: 0 6px 6px -2px #beb9b9;
 }
-.krpano{
-    background: #4d58c8;
+.article-title:hover{
+    color:#0053ff;
 }
-.webgl{
-    background: #FF1493;
-}
+
 
 </style>
 

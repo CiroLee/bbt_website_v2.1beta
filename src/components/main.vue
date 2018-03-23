@@ -37,7 +37,7 @@ export default {
   name:"mainpage",
   data(){
       return {
-          shareurl:"",
+          shareurl:'http://www/nanhaibo.com/bbt_tech',
           iscatalog:false,
           sharecode:false
       }
@@ -53,7 +53,7 @@ export default {
       },
       toggleShareQrcode(){
           this.sharecode = !this.sharecode;
-          this.shrareurl = window.location.href;
+          this.shareurl = window.location.href;
       },
       toggleCatalog(){
           this.iscatalog = !this.iscatalog;

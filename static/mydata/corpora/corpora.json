@@ -3,6 +3,10 @@
         {
             "keys":["你好","hello","nihao"],
             "answer":"你好,找我什么事"
+        },
+        {
+            "keys":["链接","lianjie","link"],
+            "answer":"http://www.nanhaibo.com/bbt_tech"
         }
     ]
 }

@@ -13,7 +13,7 @@
         <div class="input-block">
             <div class="inputbar">
                 <div class="outer-input">
-                    <input type="text" placeholder="input something" v-model="textinput" @keyup.enter="questionFormat">
+                    <input type="text" placeholder="input something,like Hello " v-model="textinput" @keyup.enter="questionFormat">
                 </div>
                 <span class="text-send fa fa-send" @click="questionFormat"></span>
             </div>
@@ -49,7 +49,8 @@ export default {
       //初始化滚动
       this.$nextTick(()=>{
           if(this.isPC){
-              this.scroll = new BScroll(this.$refs.chatblock,{
+              let selector = this.$refs.chatblock;
+              this.scroll = new BScroll(selector,{
                   click:true
               });
           }
@@ -154,6 +155,7 @@ ul, li{
     margin-left:58px;
     background: #e5e4e3;
     border-radius: 4px;
+    user-select: text;
 }
 .inputbar{
     width:60%;

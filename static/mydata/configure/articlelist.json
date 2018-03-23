@@ -5,7 +5,7 @@
             "star":5,
             "title":"article about javascript",
             "abstract":"关于vue的weex方法，折行，省略号...",
-            "tags":["javascript","webgl"],
+            "tags":["javascript"],
             "lasttime":"2018-3-13",
             "url":"README"
         },
@@ -14,7 +14,7 @@
             "star":3,
             "title":"article about javascript",
             "abstract":"关于vue的weex方法，折行，省略号...",
-            "tags":["javascript"],
+            "tags":["css","html","vue"],
             "lasttime":"2018-3-22",
             "url":"article2"
         }

@@ -1,5 +1,5 @@
 <template>
-  <div class="support-mask" @click="closeSupport" >
+  <div class="support-mask" @click.prevent="closeSupport" >
     <div class="support-qrcode">
       <span class="support-title">请我吃棒棒糖</span>
       <img class="wx_qrcode" src="static/images/wx_payin.jpg" alt="" />
@@ -39,17 +39,18 @@ export default {
     position:fixed;
     top:40%;
     left:50%;
-    background: rgba(239, 239, 239, 0.83);
+    background: #ebebeb;
     border-radius: 4px;
     text-align: center;
     transform:translate(-50%,-50%);
+    z-index:100;
 }
 .support-title{
     display: block;
     padding:10px;
     font-size:20px;
     font-weight: bold;
-    color:#7b06ed;
+    color:#333;
 }
 .wx_qrcode{
     width:90%;

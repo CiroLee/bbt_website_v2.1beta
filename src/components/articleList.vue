@@ -6,14 +6,10 @@
           <li class="tag-item" data-tag="recommand"  @click="tagItemClick($event)">推荐</li>
       </div>
       <!--文章卡片组件-->
-      <article-card :articlelist="item" v-for="item in articlelist" :key="item.id"/>
+      <article-card @tagEvent="onecategoryEvent" v-if="!iscategory" :articlelist="item" v-for="item in articlelist" :key="item.id"/>
       <!--分类组件-->
-      <div class="category-container">
-          <article-tag />
-          <article-tag />
-          <article-tag />
-          <article-tag />
-          <article-tag />
+      <div class="category-container" v-if="iscategory">
+          <article-tag @oneCategory="onecategoryEvent" v-for="(item,index) in articletags" :key="index" :articletags="item"/>
       </div>
   </div>
 </template>
@@ -26,7 +22,9 @@ export default {
   name:'articlelist',
   data(){
       return {
-          articlelist:[]
+          articlelist:[],
+          articletags:[],
+          iscategory:false
       }
   },
   components:{
@@ -38,14 +36,26 @@ export default {
   },
   methods:{
       tagItemClick(e){
+          let target = e.currentTarget;
           let tag = e.currentTarget.dataset.tag;
+          let tagitems = document.getElementsByClassName('tag-item');
+          target.classList.add('tag-active')
+          for(let i =0;i < tagitems.length;i++){
+              if(target != tagitems[i]){
+                  tagitems[i].classList.remove('tag-active')
+              }
+          }
+          
           switch(tag){
               case 'all':
+                this.iscategory = false;
                 this.getAllArticleList();
               break;
               case "category":
+                this.iscategory = true;
               break;
               case "recommand":
+              this.iscategory = false;
                 this.getRecommandArticle();
               break;
           }
@@ -53,6 +63,11 @@ export default {
       getAllArticleList(){
           axios.get('static/mydata/configure/articlelist.json').then(res=>{
             this.articlelist = res.data.articlelist;
+            //提取标签
+            this.articlelist.forEach(value=>{
+              this.articletags = this.articletags.concat(value.tags);
+            });
+            this.articletags = Array.from(new Set(this.articletags));
         });
       },
       getRecommandArticle(){
@@ -65,6 +80,18 @@ export default {
                     }
                 })
         });
+      },
+      onecategoryEvent(msg){
+          
+          axios.get('static/mydata/configure/articlelist.json').then(res=>{
+              let templist = res.data.articlelist.filter(value=>{
+                  return value.tags.indexOf(msg) > -1
+              });
+              this.iscategory = false;
+              this.articlelist = templist;
+          });
+
+          
       }
   }
 }
@@ -101,22 +128,25 @@ ul , li{
     text-decoration: none;
 }
 .tag-item:hover{
-    background: #686c74;
-    border-bottom:2px solid red;
+    color:#ef8d09;
+    font-weight: bold;
+}
+.tag-active{
+    background: #545455;
+    border-bottom: 2px solid #ef8d09;
 }
 .category-container{
     width:94%;
     max-width: 1200px;
-    height:200px;
     position: relative;
     margin:0 auto;
     overflow: hidden;
     display: flex;
     flex-wrap:wrap;
-    background: aqua;
+    /* background: aqua; */
 }
 
-@media screen and (orientation:portrait){
+@media only screen and (max-width: 736px){
   .category-container{
       justify-content: center;
   }

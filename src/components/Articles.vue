@@ -2,7 +2,7 @@
   <div class="bbt-article-container">
     <!--文章主体-->
     <article class="bbt-article">
-      <div class="article-content" v-html="md2html" v-highlight ref="contents"></div>
+      <div class="article-content" v-html="md2html" v-highlight ></div>
     </article>
     <!--说明-->
     <div class="bbt-remarks">
@@ -37,21 +37,26 @@ export default {
     }
   },
   created(){
-    let path = 'static/mydata/articles/';
-    let link = path + this.$route.query.url + '.md';
-    axios.get(link).then(res=>{
-      this.content = res.data;
-    })
-    .catch(error=> {
-    this.$router.push({path:'error'});
-  });
-  //获取当前地址
-  this.currentURL = window.location.href;
-
+    this.fetchData()
+  },
+  watch:{
+    '$route':'fetchData'
   },
   methods:{
     closeSupport(data){
       this.supportShow = data;
+    },
+    fetchData(){
+      let path = 'static/mydata/articles/';
+      let link = path + this.$route.query.url + '.md';
+      axios.get(link).then(res=>{
+        this.content = res.data;
+      })
+      .catch(error=> {
+      this.$router.push({path:'error'});
+    });
+    //获取当前地址
+    this.currentURL = window.location.href;
     }
   },
   components:{
@@ -95,6 +100,16 @@ pre{
 code{
   margin:10px 0;
   border-radius: 2px;
+  font-size:14px;
+  font-family: Consolas, Monaco, courier, monospace, sans-serif;
+}
+blockquote{
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    border-left: 6px solid #bdbfbe;
+    padding: 2px 10px;
+    background: #f7f7f7;
 }
 .bbt-remarks{
   width: 80%;

@@ -46,3 +46,10 @@ background: #efefef;
 .krpano{
     background-image: linear-gradient(135deg, #5b89a3 0%, #13547a 100%);
 }
+.UI{
+    background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+}
+background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+.others{
+    background-image: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+}

@@ -1,7 +1,7 @@
 <template>
     <div class="sidecatalog">
         <div class="author-brief">
-            <img src="../assets/images/logo.jpg" alt="">
+            <img src="../assets/images/logo.jpg" alt="" @click="avatarEvent">
             <span class="breif-text">彩虹棉花棒棒糖</span>
             <span class="breif-text" style="color:#e8e8e8">ciromail@126.com</span>
             <!-- <i class="bbt_qrcode fa fa-qrcode"></i> -->
@@ -30,6 +30,10 @@ export default {
   methods:{
       closeSide(){
           this.$emit('closeside',false);
+      },
+      avatarEvent(){
+        this.$router.push({name:'article',query:{url:'aboutme'}});
+        this.closeSide();
       }
   }
 }
@@ -65,6 +69,7 @@ a{
     box-sizing: border-box;
     border:2px solid #fff;
     margin:10% 10px 10px 20px;
+    cursor: pointer;
 }
 .breif-text{
     display: block;

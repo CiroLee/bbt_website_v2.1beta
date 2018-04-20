@@ -110,6 +110,7 @@ blockquote{
     border-left: 6px solid #bdbfbe;
     padding: 2px 10px;
     background: #f7f7f7;
+    color:#6b6969;
 }
 .bbt-remarks{
   width: 80%;

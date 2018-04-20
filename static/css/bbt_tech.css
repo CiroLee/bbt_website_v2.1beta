@@ -27,6 +27,16 @@ background: #efefef;
 ::-webkit-scrollbar-thumb:hover{
   background: rgba(105, 105, 105, 0.6)
 }
+.singlecode{
+    display: inline;
+    padding: 3px;
+    margin: 0 2px;
+    background: #f7f7f7;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #e4dfdf;
+    color:#FF4081;
+}
 
 .javascript{
     background-image: linear-gradient(135deg, #e9995b 0%, #ff6f00 100%);
@@ -49,7 +59,6 @@ background: #efefef;
 .UI{
     background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
 }
-background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
 .others{
     background-image: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
 }

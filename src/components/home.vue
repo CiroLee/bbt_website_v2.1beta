@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
       <!--codeingsnippet-->
-      <code-snippet />
+    <!-- <CodeSnippet /> -->
       <!--推荐分割线-->
       <div class="recommend-line">
           <i class="fa fa-star"></i>
